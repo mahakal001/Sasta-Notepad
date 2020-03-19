@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            Snackbar.make(view, "Opening New Slate", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
-
     }
 }
