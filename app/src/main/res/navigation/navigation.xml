@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment3">
+    <fragment
+        android:id="@+id/titleFragment3"
+        android:name="com.mahakal001.sastanotepad.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment3_to_takeNoteFragment4"
+            app:destination="@id/takeNoteFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeNoteFragment4"
+        android:name="com.mahakal001.sastanotepad.TakeNoteFragment"
+        android:label="TakeNoteFragment"
+        tools:layout="@layout/fragment_take_note"
+        />
+</navigation>

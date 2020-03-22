@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mahakal001.sastanotepad.TakeNoteFragment">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
+        android:autofillHints="canbe used in future,to autofill notes from past pages"
+        android:hint="Add your note here ..."
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 </LinearLayout>
+</layout>

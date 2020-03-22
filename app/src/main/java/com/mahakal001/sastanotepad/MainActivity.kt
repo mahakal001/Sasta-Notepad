@@ -11,8 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Opening New Slate", Snackbar.LENGTH_LONG).setAction("Action", null).show()
-        }
     }
 }
