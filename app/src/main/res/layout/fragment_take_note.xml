@@ -2,21 +2,78 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mahakal001.sastanotepad.TakeNoteFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.mahakal001.sastanotepad.takeNote.TakeNoteFragment">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <data>
 
-    <EditText
-        android:autofillHints="canbe used in future,to autofill notes from past pages"
-        android:hint="Add your note here ..."
-        android:id="@+id/editText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
-</LinearLayout>
+        <variable
+            name="takeNoteViewModel"
+            type="com.mahakal001.sastanotepad.takeNote.TakeNoteViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="canbe used in future,to autofill notes from past pages"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Add your note here ..."
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/done_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.429"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.043" />
+
+        <Button
+            android:id="@+id/done_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="171dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:text="Done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.835"
+            app:layout_constraintStart_toEndOf="@+id/clear_button" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/clear_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{takeNoteViewModel.notesString}"
+            />
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:onClick="@{() -> takeNoteViewModel.onClearButtonPressed()}"
+            android:text="CLEAR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/done_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

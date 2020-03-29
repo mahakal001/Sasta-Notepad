@@ -6,7 +6,7 @@
     app:startDestination="@id/titleFragment3">
     <fragment
         android:id="@+id/titleFragment3"
-        android:name="com.mahakal001.sastanotepad.TitleFragment"
+        android:name="com.mahakal001.sastanotepad.title.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
         <action
@@ -15,8 +15,12 @@
     </fragment>
     <fragment
         android:id="@+id/takeNoteFragment4"
-        android:name="com.mahakal001.sastanotepad.TakeNoteFragment"
+        android:name="com.mahakal001.sastanotepad.takeNote.TakeNoteFragment"
         android:label="TakeNoteFragment"
         tools:layout="@layout/fragment_take_note"
-        />
+        >
+        <action
+            android:id="@+id/action_takeNoteFragment4_to_titleFragment3"
+            app:destination="@id/titleFragment3" />
+    </fragment>
 </navigation>

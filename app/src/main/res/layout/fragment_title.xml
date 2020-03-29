@@ -3,7 +3,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mahakal001.sastanotepad.TitleFragment">
+    tools:context="com.mahakal001.sastanotepad.title.TitleFragment">
+
+    <data>
+
+        <variable
+            name="titleViewModel"
+            type="com.mahakal001.sastanotepad.title.TitleViewModel" />
+    </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/linearLayout"
