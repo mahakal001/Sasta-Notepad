@@ -14,5 +14,5 @@ data class Notes (
     val recordTiming: Long = System.currentTimeMillis(),
 
     @ColumnInfo(name = "notes_string")
-    var Notes : String = ""
+    var notes : String = ""
 )

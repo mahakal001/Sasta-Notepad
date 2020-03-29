@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.mahakal001.sastanotepad.R
@@ -39,6 +40,17 @@ class TakeNoteFragment : Fragment() {
                 takeNoteViewModel.onTakeNoteCompleted(binding.editText.text.toString())
             Log.i("TakeNoteFragment",binding.editText.text.toString() )
         }
+
+        // code regarding Recycler View
+        val adapter = TakeNoteAdapter()
+        binding.notesList.adapter = adapter
+        takeNoteViewModel.allNotes.observe(viewLifecycleOwner, Observer {
+            it?.let{
+                adapter.data = it
+            }
+        })
+
+
 
             return binding.root
     }

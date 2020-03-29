@@ -19,7 +19,7 @@ class TakeNoteViewModel (
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val allNotes = database.getAllNotes()
+    val allNotes = database.getAllNotes()
     val notesString = Transformations.map(allNotes) { notes ->
         formatNotes(notes, application.resources)
     }
@@ -31,7 +31,7 @@ class TakeNoteViewModel (
     fun onTakeNoteCompleted(note_text : String ) {
         uiScope.launch {
             val newNote = Notes()
-            newNote.Notes = note_text
+            newNote.notes = note_text
             insert(newNote)
         }
     }

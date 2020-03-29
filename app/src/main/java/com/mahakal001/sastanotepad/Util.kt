@@ -21,7 +21,9 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.TextView
 import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.mahakal001.sastanotepad.database.Notes
 import java.text.SimpleDateFormat
 
@@ -68,7 +70,7 @@ fun formatNotes(notes: List<Notes>, resources: Resources): Spanned {
             append("Time :- ")
             append("\t${convertLongToDateString(it.recordTiming)}<br>")
             append("Notes :- ")
-            append("\t${it.Notes}<br><br>")
+            append("\t${it.notes}<br><br>")
         }
     }
 
@@ -78,3 +80,5 @@ fun formatNotes(notes: List<Notes>, resources: Resources): Spanned {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
+
+class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
