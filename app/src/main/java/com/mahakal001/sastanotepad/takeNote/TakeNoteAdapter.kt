@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mahakal001.sastanotepad.convertLongToDateString
 import com.mahakal001.sastanotepad.database.Notes
 import com.mahakal001.sastanotepad.databinding.ListAllNotesBinding
 
-class TakeNoteAdapter : ListAdapter<Notes, TakeNoteAdapter.ViewHolder>( NotesDiffCallback()) {
+class TakeNoteAdapter(val clickListener: NoteListener)
+    : ListAdapter<Notes, TakeNoteAdapter.ViewHolder>( NotesDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position)!!, clickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +22,11 @@ class TakeNoteAdapter : ListAdapter<Notes, TakeNoteAdapter.ViewHolder>( NotesDif
 
     class ViewHolder  private constructor(val binding: ListAllNotesBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind( item: Notes ) {
+        fun bind(
+            item: Notes,
+            clickListener: NoteListener
+        ) {
+            binding.clickListener = clickListener
             binding.notes =     item
             binding.executePendingBindings()
         }
@@ -35,18 +39,17 @@ class TakeNoteAdapter : ListAdapter<Notes, TakeNoteAdapter.ViewHolder>( NotesDif
             }
         }
     }
-
 }
 
 class NotesDiffCallback : DiffUtil.ItemCallback<Notes>() {
     override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
         return oldItem.noteId == newItem.noteId
     }
-
     override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
         return oldItem == newItem
     }
-
-
 }
 
+class NoteListener( val clickListener: (sleepId: Long) -> Unit ){
+    fun onClick(note: Notes) = clickListener(note.noteId)
+}

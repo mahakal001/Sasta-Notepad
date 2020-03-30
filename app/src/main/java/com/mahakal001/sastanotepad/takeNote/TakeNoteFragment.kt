@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -43,7 +44,12 @@ class TakeNoteFragment : Fragment() {
         }
 
         // code regarding Recycler View
-        val adapter = TakeNoteAdapter()
+        val adapter = TakeNoteAdapter(
+            NoteListener { noteId ->
+                Toast.makeText(context, "${noteId}", Toast.LENGTH_LONG).show()
+            }
+        )
+
         binding.notesList.adapter = adapter
         takeNoteViewModel.allNotes.observe(viewLifecycleOwner, Observer {
             it?.let{

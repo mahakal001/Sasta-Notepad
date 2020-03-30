@@ -7,11 +7,16 @@
         <variable
         name="notes"
         type="com.mahakal001.sastanotepad.database.Notes"/>
+        
+        <variable
+            name="clickListener"
+            type="com.mahakal001.sastanotepad.takeNote.NoteListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(notes)}">
 
         <TextView
             android:id="@+id/note_timing"
