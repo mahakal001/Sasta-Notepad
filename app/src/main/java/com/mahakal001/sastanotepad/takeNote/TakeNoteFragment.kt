@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mahakal001.sastanotepad.R
 import com.mahakal001.sastanotepad.database.NotesDatabase
 import com.mahakal001.sastanotepad.databinding.FragmentTakeNoteBinding
@@ -50,7 +51,8 @@ class TakeNoteFragment : Fragment() {
             }
         })
 
-
+        val manager = GridLayoutManager(activity, 2)
+        binding.notesList.layoutManager = manager
 
             return binding.root
     }
