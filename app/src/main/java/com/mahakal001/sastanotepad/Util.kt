@@ -43,7 +43,7 @@ import java.text.SimpleDateFormat
  * HH:mm - Hours and minutes in 24hr format
  */
 @SuppressLint("SimpleDateFormat")
-fun convertLongToDateString(systemTime: Long): String {
+fun convertLongToDateString(systemTime: Long, res: Resources): String {
     return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
             .format(systemTime).toString()
 }
@@ -61,14 +61,14 @@ fun convertLongToDateString(systemTime: Long): String {
  * @return  Spanned - An interface for text that has formatting attached to it.
  *           See: https://developer.android.com/reference/android/text/Spanned
  */
-fun formatNotes(notes: List<Notes>, resources: Resources): Spanned {
+fun formatNotes(notes: List<Notes>, res: Resources): Spanned {
     val sb = StringBuilder()
     sb.apply {
         append("Here are your Notes")
         notes.forEach {
             append("<br>")
             append("Time :- ")
-            append("\t${convertLongToDateString(it.recordTiming)}<br>")
+            append("\t${convertLongToDateString(it.recordTiming,res)}<br>")
             append("Notes :- ")
             append("\t${it.notes}<br><br>")
         }
@@ -79,6 +79,10 @@ fun formatNotes(notes: List<Notes>, resources: Resources): Spanned {
     } else {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
+}
+
+fun formatSingleNoteString(note : String, res: Resources): String {
+    return note
 }
 
 class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)

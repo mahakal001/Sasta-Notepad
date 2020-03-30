@@ -20,9 +20,6 @@ class TakeNoteViewModel (
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     val allNotes = database.getAllNotes()
-    val notesString = Transformations.map(allNotes) { notes ->
-        formatNotes(notes, application.resources)
-    }
 
     init{
         Log.i("TakeNoteViewModel","TakeNoteViewModel created!")

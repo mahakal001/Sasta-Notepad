@@ -46,7 +46,7 @@ class TakeNoteFragment : Fragment() {
         binding.notesList.adapter = adapter
         takeNoteViewModel.allNotes.observe(viewLifecycleOwner, Observer {
             it?.let{
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
