@@ -3,6 +3,7 @@ package com.mahakal001.sastanotepad.takeNote
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.mahakal001.sastanotepad.database.Notes
@@ -56,4 +57,18 @@ class TakeNoteViewModel (
         viewModelJob.cancel()
         Log.i("TakeNoteViewModel", "TakeNoteViewModel destroyed!")
     }
+
+    private val _navigateToNoteDetail = MutableLiveData<Long>()
+    val navigateToNoteDetail
+        get() = _navigateToNoteDetail
+
+
+    fun onNoteClicked(id: Long){
+        _navigateToNoteDetail.value = id
+    }
+
+    fun onNoteDetailNavigated() {
+        _navigateToNoteDetail.value = null
+    }
+
 }

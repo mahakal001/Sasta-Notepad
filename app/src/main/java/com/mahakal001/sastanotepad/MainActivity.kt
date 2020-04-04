@@ -8,10 +8,12 @@ import com.mahakal001.sastanotepad.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         Log.i("MainActivity","MainActivity has called the onCreate Methods")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
 }

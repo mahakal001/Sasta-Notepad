@@ -27,6 +27,8 @@
             android:gravity="start|top"
             android:hint="Add your note here ..."
             android:inputType="textMultiLine"
+            android:maxLength="4096"
+            android:maxLines="100"
             app:layout_constraintBottom_toTopOf="@+id/done_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.429"

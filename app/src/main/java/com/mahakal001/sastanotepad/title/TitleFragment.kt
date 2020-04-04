@@ -26,10 +26,14 @@ class TitleFragment : Fragment() {
 
         Log.i("TitleFragment","Called ViewModelProviders.of")
         viewModel = ViewModelProviders.of(this).get(TitleViewModel::class.java)
+
         binding.titleViewModel = viewModel
             binding.fab.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_titleFragment3_to_takeNoteFragment4)
+           //view.findNavController().navigate(R.id.action_titleFragment3_to_takeNoteFragment4)
+                view.findNavController().navigate(TitleFragmentDirections.actionTitleFragment3ToTakeNoteFragment4())
         }
+
+
 
         return binding.root
     }

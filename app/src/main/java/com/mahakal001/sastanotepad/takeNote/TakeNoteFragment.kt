@@ -11,10 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mahakal001.sastanotepad.R
 import com.mahakal001.sastanotepad.database.NotesDatabase
 import com.mahakal001.sastanotepad.databinding.FragmentTakeNoteBinding
+import com.mahakal001.sastanotepad.noteDetails.NoteDetailsFragmentArgs
 
 /**
  * A simple [Fragment] subclass.
@@ -40,15 +42,29 @@ class TakeNoteFragment : Fragment() {
         binding.doneButton.setOnClickListener {
                // view : View ->  view.findNavController().navigate(R.id.action_takeNoteFragment4_to_titleFragment3)
                 takeNoteViewModel.onTakeNoteCompleted(binding.editText.text.toString())
+                binding.editText.text.clear()
             Log.i("TakeNoteFragment",binding.editText.text.toString() )
         }
+
+
 
         // code regarding Recycler View
         val adapter = TakeNoteAdapter(
             NoteListener { noteId ->
                 Toast.makeText(context, "${noteId}", Toast.LENGTH_LONG).show()
+                takeNoteViewModel.onNoteClicked(noteId)
             }
         )
+
+
+        takeNoteViewModel.navigateToNoteDetail.observe( this,
+            Observer { noteId -> noteId?.let{
+                this.findNavController().navigate(
+                    TakeNoteFragmentDirections
+                        .actionTakeNoteFragment4ToNoteDetailsFragment(noteId))
+                takeNoteViewModel.onNoteDetailNavigated()
+            } }
+            )
 
         binding.notesList.adapter = adapter
         takeNoteViewModel.allNotes.observe(viewLifecycleOwner, Observer {

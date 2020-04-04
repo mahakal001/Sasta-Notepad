@@ -8,11 +8,15 @@ import com.mahakal001.sastanotepad.formatNotes
 import com.mahakal001.sastanotepad.formatSingleNoteString
 
 @BindingAdapter("noteTimingFormatter")
-fun TextView.setNoteTimingFormatter( item: Notes) {
-    text = convertLongToDateString(item.recordTiming,context.resources)
-}
+fun TextView.setNoteTimingFormatter( item: Notes?) {
+    item?.let {
+        text = convertLongToDateString(item.recordTiming, context.resources)
+    }
+    }
 
 @BindingAdapter("noteFormatter")
-fun TextView.setNoteStringFormatter(item : Notes){
-    text = formatSingleNoteString(item.notes,context.resources)
+fun TextView.setNoteStringFormatter(item : Notes?) {
+    item?.let {
+        text = formatSingleNoteString(item.notes, context.resources)
+    }
 }

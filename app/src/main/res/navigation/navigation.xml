@@ -22,5 +22,21 @@
         <action
             android:id="@+id/action_takeNoteFragment4_to_titleFragment3"
             app:destination="@id/titleFragment3" />
+        <action
+            android:id="@+id/action_takeNoteFragment4_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.mahakal001.sastanotepad.noteDetails.NoteDetailsFragment"
+        android:label="NoteDetailsFragment"
+        tools:layout="@layout/fragment_note_details"
+        >
+        <action
+            android:id="@+id/action_noteDetailsFragment_to_takeNoteFragment4"
+            app:destination="@id/takeNoteFragment4" />
+        <argument
+            android:name="noteId"
+            app:argType="long" />
     </fragment>
 </navigation>

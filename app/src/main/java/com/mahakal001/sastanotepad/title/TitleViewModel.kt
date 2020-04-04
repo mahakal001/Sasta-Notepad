@@ -9,7 +9,6 @@ class TitleViewModel : ViewModel() {
         Log.i("TitleViewModel","TitleViewModel created!")
     }
 
-
     override fun onCleared() {
         super.onCleared()
         Log.i("TitleViewModel", "TitleViewModel destroyed!")
